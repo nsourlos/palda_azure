@@ -14,7 +14,7 @@ path="https://raw.githubusercontent.com/nsourlos/palda_azure/main/palda.csv"
 
 def clean_data(data):
     y_df = data.iloc[:,-2]
-    x_df = data.iloc[: , :-1]
+    x_df = data.iloc[: , :-1] #was -1
 
 
 
@@ -43,10 +43,11 @@ def main():
     # ds=from_delimited_files(url, validate=True, include_path=False, infer_column_types=True, set_column_types=None, separator=',', header=True, partition_format=None, support_multi_line=False, empty_as_string=False, encoding='utf8')
     ds=TabularDatasetFactory.from_delimited_files(path=url)#datastore_path)
     
-    
+    df=ds.to_pandas_dataframe()
+
     ### YOUR CODE HERE ###
     
-    x, y = clean_data(ds)
+    x, y = clean_data(df)
 
     # TODO: Split data into train and test sets.
 
@@ -59,7 +60,7 @@ def main():
     run.log("Accuracy", np.float(accuracy))
 
     os.makedirs('./outputs', exist_ok=True)
-    joblib.dump(model, "/outputs/model.joblib")
+    joblib.dump(model, "./outputs/model.joblib")
 
 if __name__ == '__main__':
     main()
