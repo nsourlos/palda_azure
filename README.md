@@ -42,13 +42,13 @@ The best results were obtained using a voting ensemble with which an AUC_weighte
 *TODO* Remember to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
 RunWidgets after execution
-![alt text](https://github.com/nsourlos/operationalizing_ML_Project2/blob/main/images/runwidgets.png)
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/runwidgets.png)
 
 AUC_weighted graph that shows changes after each experiment
-![alt text](https://github.com/nsourlos/operationalizing_ML_Project2/blob/main/images/automl_2.png)
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/automl_2.png)
 
 Detailed list of experiments performed and their AUC_weighted value
-![alt text](https://github.com/nsourlos/operationalizing_ML_Project2/blob/main/images/automl_1.png)
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/automl_1.png)
 
 
 ## Hyperparameter Tuning
@@ -64,13 +64,13 @@ With this model, the best result obtained is an accuracy of 0.878, which was obt
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
 RunWidgets for hyperdrive
-![alt text](https://github.com/nsourlos/operationalizing_ML_Project2/blob/main/images/runwidgets1.png)
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/runwidgets1.png)
 
 Accuracy evolution for the experiments performed
-![alt text](https://github.com/nsourlos/operationalizing_ML_Project2/blob/main/images/accuracy.png)
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/accuracy.png)
 
 List of hyperparameters sampled by hyperdrive
-![alt text](https://github.com/nsourlos/operationalizing_ML_Project2/blob/main/images/hyper_paramas.png)
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/hyper_paramas.png)
 
 Best hyperparameters after hyperdrive run
 ![alt text](https://github.com/nsourlos/operationalizing_ML_Project2/blob/main/images/best_hyper_params.png)
