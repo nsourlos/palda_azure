@@ -70,10 +70,10 @@ Accuracy evolution for the experiments performed
 ![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/accuracy.png)
 
 List of hyperparameters sampled by hyperdrive
-![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/hyper_paramas.png)
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/hyper_params.png)
 
 Best hyperparameters after hyperdrive run
-![alt text](https://github.com/nsourlos/operationalizing_ML_Project2/blob/main/images/best_hyper_params.png)
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/best_hyper_params.png)
 
 
 ## Model Deployment
