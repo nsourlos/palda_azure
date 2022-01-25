@@ -14,11 +14,50 @@ path="https://raw.githubusercontent.com/nsourlos/palda_azure/main/palda.csv"
 
 def clean_data(data):
     y_df = data.iloc[:,-2]
-    x_df = data.iloc[: , :-1] #was -1
-
-
-
+    x_df = data.iloc[: , :-2] #was -1
+    # y_df=data.pop('diagnosis')
+    # rem=data.pop('heal/pat')
+    # x_df=data
+    
+    # for i in range(len(x_df)):
+    #     if x_df['diagnosis'].iloc[i]=='peripheral':
+    #         x_df['diagnosis'].iloc[i]=0
+    #         y_df.iloc[i]=0
+    #     elif x_df['diagnosis'].iloc[i]=='central':
+    #         x_df['diagnosis'][i]=1
+    #         y_df.iloc[i]=1
+    #     elif x_df['diagnosis'].iloc[i]=='Healthy':
+    #         x_df['diagnosis'].iloc[i]=3
+    #         y_df.iloc[i]=3
+        
+    # for i in range(len(y_df)):
+    #     if y_df.iloc[i]=='peripheral':
+    #         y_df.iloc[i]=0
+    #     elif y_df.iloc[i]=='central':
+    #         y_df.iloc[i]=1
+    #     elif y_df.iloc[i]=='Healthy':
+    #         y_df.iloc[i]=3
+    print(x_df)
+    print(y_df)
     return x_df, y_df
+
+url="https://raw.githubusercontent.com/nsourlos/palda_azure/main/palda.csv"
+# ds = TabularDatasetFactory(url)
+# ds=from_delimited_files(url, validate=True, include_path=False, infer_column_types=True, set_column_types=None, separator=',', header=True, partition_format=None, support_multi_line=False, empty_as_string=False, encoding='utf8')
+ds=TabularDatasetFactory.from_delimited_files(path=url)#datastore_path)
+
+df=ds.to_pandas_dataframe()
+
+### YOUR CODE HERE ###
+
+x, y = clean_data(df)
+
+# TODO: Split data into train and test sets.
+
+### YOUR CODE HERE ###a
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
+run = Run.get_context(allow_offline=True)
+
 
 def main():
     # Add arguments to script
@@ -29,7 +68,7 @@ def main():
 
     args = parser.parse_args()
 
-    run = Run.get_context()
+    # run = Run.get_context()
 
     run.log("Regularization Strength:", np.float(args.C))
     run.log("Max iterations:", np.int(args.max_iter))
@@ -38,28 +77,28 @@ def main():
     # Data is located at:
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
-    url="https://raw.githubusercontent.com/nsourlos/palda_azure/main/palda.csv"
-    # ds = TabularDatasetFactory(url)
-    # ds=from_delimited_files(url, validate=True, include_path=False, infer_column_types=True, set_column_types=None, separator=',', header=True, partition_format=None, support_multi_line=False, empty_as_string=False, encoding='utf8')
-    ds=TabularDatasetFactory.from_delimited_files(path=url)#datastore_path)
+    # url="https://raw.githubusercontent.com/nsourlos/palda_azure/main/palda.csv"
+    # # ds = TabularDatasetFactory(url)
+    # # ds=from_delimited_files(url, validate=True, include_path=False, infer_column_types=True, set_column_types=None, separator=',', header=True, partition_format=None, support_multi_line=False, empty_as_string=False, encoding='utf8')
+    # ds=TabularDatasetFactory.from_delimited_files(path=url)#datastore_path)
     
-    df=ds.to_pandas_dataframe()
+    # df=ds.to_pandas_dataframe()
 
-    ### YOUR CODE HERE ###
+    # ### YOUR CODE HERE ###
     
-    x, y = clean_data(df)
+    # x, y = clean_data(df)
 
-    # TODO: Split data into train and test sets.
+    # # TODO: Split data into train and test sets.
 
-    ### YOUR CODE HERE ###a
-    x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
+    # ### YOUR CODE HERE ###a
+    # x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
 
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
     accuracy = model.score(x_test, y_test)
     run.log("Accuracy", np.float(accuracy))
 
-    os.makedirs('./outputs', exist_ok=True)
+    os.makedirs('outputs', exist_ok=True) #'./'
     joblib.dump(model, "./outputs/model.joblib")
 
 if __name__ == '__main__':
