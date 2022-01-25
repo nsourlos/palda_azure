@@ -50,6 +50,13 @@ AUC_weighted graph that shows changes after each experiment
 Detailed list of experiments performed and their AUC_weighted value
 ![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/automl_1.png)
 
+Details of the best autoMl model
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/automl_best1.png)
+
+
+Details of the best autoMl model - RunID
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/automl_best2.png)
+
 
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
@@ -79,7 +86,24 @@ Best hyperparameters after hyperdrive run
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
-The model was deployed using aci_webservice. Some of the datapoints of the test dataset were converted to a dictionary and provided as input to the model to get results. The data were given as input in JSON format and we made a request to the model and got its output. It correctly predicted all the 3 datapoints as belonging to either a healthy individual, a patient with a peripheral and a patient with a central palsy respectively.
+The model was deployed using aci_webservice. Some of the datapoints of the test dataset were converted to a dictionary and provided as input to the model to get results. The data were given as input in JSON format and we made a request to the model and got its output. It correctly predicted all the 3 datapoints as belonging to either a healthy individual, a patient with a peripheral and a patient with a central palsy respectively. 
+
+Active model endpoint
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/endpoint1.png)
+
+
+AutoML composition: scoring_uri and sample of data given as input to the model
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/request1.png)
+
+Sample data of one patient (continued)
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/request2.png)
+
+Sample data when change from one patient to the next
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/request3.png)
+
+Conversion to JSON,authorization, and making of the request
+![alt text](https://github.com/nsourlos/palda_azure/blob/main/images/request4.png)
+
 
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
